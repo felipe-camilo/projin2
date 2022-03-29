@@ -1,0 +1,12 @@
+package classes;
+
+class Conexao {
+	
+	static class conectar {
+		private String stmt;
+		private String resultado;
+		private String servidordb;
+		private String usuario;
+		private String senha;
+	}
+}

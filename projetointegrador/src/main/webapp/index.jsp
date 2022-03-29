@@ -19,21 +19,19 @@
 	<div class="container">
 
 		<%
+		String nome = "";
 		String descricao = "";
-		String reqObrigatorio = "";
-		String reqDesejavel = "";
-		Float remuneracao = 0.f;
-		String aberta = "";
-		String beneficio = "";
-		String local = "";
+		int categoria = 0;
+		String img = "";
+		Float valor = 0.f;
 		String frase = "";
 		String action = "Enviar";
 		String pagina = "inserir.jsp";
-		int vaga = 0;
+		int produto = 0;
 		String pesquisa = request.getParameter("pesquisa");
 		if (pesquisa != null) {
 			//out.print(pesquisa);
-			frase = "Editar Vaga";
+			frase = "Editar Produto";
 			action = "Editar";
 			pagina = "editar.jsp";
 			try {
@@ -44,46 +42,40 @@
 				Connection conectar;
 				Statement stmt;
 				ResultSet resultado;
-				String servidordb = "jdbc:mysql://localhost:3306/empregos";
+				String servidordb = "jdbc:mysql://localhost:3306/databasepi";
 				String user = "root";
 				String pass = "root";
 
-				vaga = Integer.parseInt(pesquisa);
+				produto = Integer.parseInt(pesquisa);
 				//out.print(pesquisa);
 				int id = 0;
 				Class.forName("com.mysql.jdbc.Driver");
 
 				conectar = DriverManager.getConnection(servidordb, user, pass);
 				stmt = conectar.createStatement();
-				String sql = "SELECT * FROM vagas WHERE idvaga =" + vaga;
-				//String sql = "SELECT * FROM vagas WHERE idvaga = ";
+				String sql = "SELECT * FROM produto WHERE codigo =" + produto;
 				resultado = stmt.executeQuery(sql);
-				//out.print(sql);
 				while (resultado.next()) {
-			//out.println(resultado.getString("descricao"));
-			descricao = resultado.getString("descricao");
-			reqObrigatorio = resultado.getString("req_obrigatorios");
-			reqDesejavel = resultado.getString("req_desejaveis");
-			remuneracao = Float.parseFloat(resultado.getString("remuneracao"));
-			aberta = resultado.getString("aberta");
-			beneficio = resultado.getString("beneficios");
-			local = resultado.getString("local_trabalho");
-
+					nome = resultado.getString("nome");
+					descricao = resultado.getString("descricao");
+					categoria = Integer.parseInt(resultado.getString("categoria"));
+					valor = Float.parseFloat(resultado.getString("valor"));
+					img = resultado.getString("img");
 				}
 
-			} catch (Exception e) {
-				e.printStackTrace(); //exibe o erro	
+			}
+			catch (Exception e) {
+				e.printStackTrace();
 				out.println(e);
 			}
 		} else {
-			//out.print("Sem valor");
-			frase = "Cadastrar Vaga";
+			frase = "Cadastrar produto";
 		}
 		%>
 
 	<form action="consulta.jsp" method="get">
 		<div class="form-row">
-			<div class="col-4"><h1>Pesquisar Vagar</h1></div>
+			<div class="col-4"><h1>Pesquisar Produtos</h1></div>
 			<div class="col-6"></div>
 			<div class="col-2"></div>
 		</div>
@@ -95,7 +87,7 @@
 	<br>
 	<form action="excluir.jsp" method="get">
 		<div class="form-row">
-			<div class="col-4"><h1>Excluir Vagar</h1></div>
+			<div class="col-4"><h1>Excluir Produto</h1></div>
 			<div class="col-6"></div>
 			<div class="col-2"></div>
 		</div>
@@ -118,37 +110,29 @@
 		<form action="<%out.print(pagina);%>" method="get">
 			<div class="form-row">
 				<div class="col-6">
-					<input type="text" class="form-control" placeholder="ID da vaga" value="<%if (vaga == 0) {out.print("");} else {out.print(vaga);}%>" name="iv" readonly>
+					<input type="text" class="form-control" placeholder="ID do produto" value="<%if (produto == 0) {out.print("");} else {out.print(produto);}%>" name="produto" readonly>
+				</div>
+				<div class="col-6">
+					<input type="text" class="form-control"
+						placeholder="Nome" name="nome"
+						value="<%out.print(nome);%>">
 				</div>
 				<div class="col-6">
 					<input type="text" class="form-control" placeholder="Descrição"
-						value="<%out.print(descricao);%>" name="ds" required>
+						value="<%out.print(descricao);%>" name="descricao" required>
 				</div>
 				<div class="col-6">
 					<input type="text" class="form-control"
-						placeholder="Requisitos obrigatórios" name="ro" required
-						value="<%out.print(reqObrigatorio);%>">
+						placeholder="Categoria" name="categoria" required
+						value="<%out.print(categoria);%>">
 				</div>
 				<div class="col-6">
-					<input type="text" class="form-control"
-						placeholder="Requisitos desejáveis" name="rd"
-						value="<%out.print(reqDesejavel);%>">
+					<input type="text" class="form-control" placeholder="Imagem"
+						value="<%out.print(img);%>" name="img">
 				</div>
 				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Remuneração"
-						value="<%if (remuneracao == 0) {out.print("");} else {out.print(remuneracao);}%>"name="re" required>
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Aberta"
-						value="<%out.print(aberta);%>" name="ab">
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Benefícios"
-						value="<%out.print(beneficio);%>" name="be" required>
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Local"
-						value="<%out.print(local);%>" name="lt" required>
+					<input type="text" class="form-control" placeholder="Valor"
+						value="<%if (valor == 0) {out.print("");} else {out.print(valor);}%>"name="valor" required>
 				</div>
 				<div class="col-2">
 					<input type="submit" class="form-control"

@@ -1,0 +1,19 @@
+package classes;
+
+public class Conexao {
+	
+	private String stmt;
+	private String resultado;
+	private String servidordb;
+	private String usuario;
+	private String senha;
+	
+	
+
+    Class.forName("com.mysql.jdbc.Driver");
+    String sql = "";
+    conectar = DriverManager.getConnection(servidordb,user,pass);*/
+    stmt = conectar.createStatement();	 
+	
+
+}

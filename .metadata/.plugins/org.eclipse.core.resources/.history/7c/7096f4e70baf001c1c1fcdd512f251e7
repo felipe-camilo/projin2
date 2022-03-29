@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.*" %>
+    
+  
+<!DOCTYPE html>
+<html>
+<head>
+ 
+<meta charset="ISO-8859-1">
+<meta http-equiv='refresh' content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<title>Insert title here</title>
+</head>
+<body>
+<%
+
+try {
+	Connection conectar = null;
+	Statement stmt = null;
+	Statement stmt1 = null;
+	ResultSet rs = null;
+	String servidordb = "jdbc:mysql://localhost:3306/empregos";
+	String user = "root";
+	String pass = "root";
+	 
+    Class.forName("com.mysql.jdbc.Driver");
+   	conectar = DriverManager.getConnection(servidordb,user,pass);
+   	stmt = conectar.createStatement();
+    stmt1 = conectar.createStatement();
+   
+    String produto = request.getParameter("produto");
+    String nome = request.getParameter("nome");
+    String descricao = request.getParameter("descricao");
+    String categoria = request.getParameter("categoria");
+    String imagem = request.getParameter("imagem");
+    String valor = Float.parseFloat(request.getParameter("valor"));
+
+    int idProduto = Integer.parseInt(produto);
+    float re = Float.parseFloat(re1);
+
+    
+    //String sql = "INSERT INTO vagas (idvaga,descricao,req_obrigatorios,req_desejaveis,remuneracao,aberta,beneficios,local_trabalho) VALUES ";
+    //sql = sql + "("+iv1+",'"+ds1+"','"+ro1+"','"+rd1+"',"+re1+",'"+ab1+"','"+be1+"','"+lt1+"')";
+    
+    String sql = "UPDATE vagas SET descricao = '" + ds1 + "', req_obrigatorios = '"+ro1+"', req_desejaveis = '"+rd1+"', remuneracao = '"+re+"', aberta = '"+ab1+"', beneficios = '"+be1+"', local_trabalho = '" +lt1+"' WHERE idvaga="  + id;
+    //out.print(sql);
+
+    //String sql = "INSERT INTO vagas (descricao,req_obrigatorios,req_desejaveis,remuneracao,aberta,beneficios,local_trabalho) VALUES ";
+    //sql = sql + "('"+ds1+"','"+ro1+"','"+rd1+"',"+re1+",'"+ab1+"','"+be1+"','"+lt1+"')";
+    
+   int n = stmt1.executeUpdate(sql);
+    
+    //if(n>0){out.print("deu certo");}
+
+}
+
+catch(Exception e){
+	e.printStackTrace();
+	out.println(e);
+	
+}
+
+%>
+
+</body>
+</html>

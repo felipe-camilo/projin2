@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+    
+  
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv='refresh' content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%
+
+try {
+	Connection conectar = null;
+	Statement stmt = null;
+	Statement stmt1 = null;
+	ResultSet rs = null;
+	String servidordb = "jdbc:mysql://localhost:3306/databasepi";
+	String user = "root";
+	String pass = "root";
+	 
+    Class.forName("com.mysql.jdbc.Driver");
+   	conectar = DriverManager.getConnection(servidordb,user,pass);
+   	stmt = conectar.createStatement();
+    stmt1 = conectar.createStatement();
+   
+
+    String nome = request.getParameter("nome");
+    String descricao = request.getParameter("descricao");
+    String categoria = request.getParameter("categoria");
+    String re1 = request.getParameter("re");
+    String img = request.getParameter("img");
+    String be1 = request.getParameter("be");
+    String lt1 = request.getParameter("lt");
+    
+    float re = Float.parseFloat(re1);
+    
+
+    
+    String sql = "INSERT INTO vagas (nome,descricao,categoria,remuneracao,aberta,beneficios,local_trabalho) VALUES ";
+    sql = sql + "('"+nome+"','"+descricao+"','"+rd1+"',"+re1+",'"+ab1+"','"+be1+"','"+lt1+"')";
+    
+   int n = stmt1.executeUpdate(sql);
+    
+}
+
+catch(Exception e){
+	e.printStackTrace();
+	out.println("Erro" + e);
+	
+}
+
+%>
+
+</body>
+</html>

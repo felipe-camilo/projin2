@@ -1,0 +1,28 @@
+package classes;
+
+public class produto {
+	private int codigo;
+	private String nome;
+	private String descricao;
+	private int categoria;
+	private float valor;
+	private string img;
+
+	
+	public void Incluir() 
+	{
+		
+	}
+	
+	public void Alterar() 
+	{
+		
+	}
+	
+	public void Excluir()
+	{
+		
+	}
+
+	
+	

@@ -1,0 +1,156 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta charset="ISO-8859-1">
+<title>Produtos</title>
+</head>
+<body>
+	<div class="container">
+	<h1>Relação de produtos</h1>
+	<a href="index.jsp">Voltar</a>
+
+<div class="card-columns">
+  	
+	
+	<div class="card" style="width:800px">
+  <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">John Doe</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
+  </div>
+</div>
+
+<div class="card" style="width:800px">
+  <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">John Doe</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
+  </div>
+</div>
+</div>
+	
+		<form action="excluir.jsp" method="get">
+			<table border="0"></table>
+
+			<%
+		
+			try {
+								
+				String pesquisa;
+				pesquisa = request.getParameter("pesquisa");
+				if( pesquisa == null || pesquisa.trim().length() == 0 ){
+					pesquisa = "";
+				}
+				
+								
+				Connection conectar;
+				Statement stmt;
+				ResultSet resultado;
+				String servidordb = "jdbc:mysql://localhost:3306/databasepi";
+				String user = "root";
+				String pass = "root";
+				
+				
+				int id = 0;
+			    Class.forName("com.mysql.jdbc.Driver");
+			    String sql = "";
+			    conectar = DriverManager.getConnection(servidordb,user,pass);
+			    stmt = conectar.createStatement();	 
+			    
+			    
+				if (pesquisa == "") {
+					sql = "SELECT * FROM produto";
+				}
+				else {
+					int idProduto = Integer.parseInt(pesquisa);
+					sql = "SELECT * FROM produto WHERE codigo =" + idProduto;
+				}
+
+			    resultado = stmt.executeQuery(sql);
+			    
+				
+
+			    out.print("<table class='table table-striped'>");
+		    	out.print("<tr>");
+		    	out.print("<th>");
+		    	out.print("Código");
+		    	out.print("</th>");  	
+		    	out.print("<th>");
+		    	out.print("Nome");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("descricao");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("categoria");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("img");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("valor");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Editar");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Deletar");
+		    	out.print("</th>");
+		    	out.print("</tr>");
+			    
+			    while(resultado.next()) {
+			    	
+			    	
+			    	out.print("<tr>");
+			    	out.print("<td>");
+			    	out.print(resultado.getInt("codigo"));
+			    	id = resultado.getInt("codigo");
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("nome"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("descricao"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getInt("categoria"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("img"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("valor"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print("<a href = 'index.jsp?pesquisa="+id+"'><i class='fa fa-edit' style='font-size:25px;color:green'></i>");
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print("<a href = 'excluir.jsp?pesquisa="+id+"'><i class='fa fa-remove' style='font-size:25px;color:red'></i>");
+			    	out.print("</td>");
+			    	out.print("</tr>");
+			    }
+			    
+		    	out.print("</table>");
+			 			    
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				out.println("Erro code" + e);
+			}
+		%>
+		</form>
+	</div>
+</body>
+</html>
