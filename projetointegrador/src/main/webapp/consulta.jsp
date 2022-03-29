@@ -10,16 +10,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-function confirma() {
-  let text;
-  if (confirm("Press a button!") == true) {
-    text = "You pressed OK!";
-  } else {
-    text = "You canceled!";
-  }
-}
-</script>
+
 <meta charset="ISO-8859-1">
 <title>Vagas</title>
 </head>
