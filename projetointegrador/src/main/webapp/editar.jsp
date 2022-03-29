@@ -11,7 +11,7 @@
 <head>
  
 <meta charset="ISO-8859-1">
-<meta http-equiv='refresh' content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<meta http-equiv='refresh' content='2; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
 <title>Insert title here</title>
 </head>
 <body>

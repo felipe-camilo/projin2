@@ -10,6 +10,13 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fotolista {
+	max-height: 50px;
+	height: 70%;
+	width: auto;
+}
+</style>
 
 <meta charset="ISO-8859-1">
 <title>Produtos</title>
@@ -17,7 +24,7 @@
 <body>
 	<div class="container">
 	<h1>Relação de produtos</h1>
-	<a href="index.jsp">Voltar</a>
+	<a href="admin.jsp">Voltar</a>
 		<form action="excluir.jsp" method="get">
 			<table border="0"></table>
 
@@ -105,13 +112,15 @@
 			    	out.print(resultado.getInt("categoria"));
 			    	out.print("</td>");
 			    	out.print("<td>");
+			    	out.print("<img class='fotolista' src='");
 			    	out.print(resultado.getString("img"));
+			    	out.print("'>");
 			    	out.print("</td>");
 			    	out.print("<td>");
 			    	out.print(resultado.getString("valor"));
 			    	out.print("</td>");
 			    	out.print("<td>");
-			    	out.print("<a href = 'index.jsp?pesquisa="+id+"'><i class='fa fa-edit' style='font-size:25px;color:green'></i>");
+			    	out.print("<a href = 'admin.jsp?pesquisa="+id+"'><i class='fa fa-edit' style='font-size:25px;color:green'></i>");
 			    	out.print("</td>");
 			    	out.print("<td>");
 			    	out.print("<a href = 'excluir.jsp?pesquisa="+id+"'><i class='fa fa-remove' style='font-size:25px;color:red'></i>");

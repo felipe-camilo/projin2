@@ -34,7 +34,15 @@ try {
     String nome = request.getParameter("nome");
     String descricao = request.getParameter("descricao");
     Integer categoria = Integer.parseInt(request.getParameter("categoria"));
+    
+    
     String img = request.getParameter("img");
+    if( img == null || img.trim().length() == 0 ){
+    	img = "";
+	}
+    
+    
+    
     float valor = Float.parseFloat(request.getParameter("valor"));
 
     

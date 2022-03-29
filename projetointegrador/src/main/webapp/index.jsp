@@ -4,40 +4,33 @@
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <meta charset="ISO-8859-1">
-
-
-<title>Insert title here</title>
+<title>Produtos</title>
 </head>
 <body>
 	<div class="container">
+		<h1>Relação de produtos</h1>
+		
+		<div class="card-columns">
 
-		<%
-		String nome = "";
-		String descricao = "";
-		int categoria = 0;
-		String img = "";
-		Float valor = 0.f;
-		String frase = "";
-		String action = "Enviar";
-		String pagina = "inserir.jsp";
-		int produto = 0;
-		String pesquisa = request.getParameter("pesquisa");
-		if (pesquisa != null) {
-			//out.print(pesquisa);
-			frase = "Editar Produto";
-			action = "Editar";
-			pagina = "editar.jsp";
+			<form action="excluir.jsp" method="get">
+
+				<%
 			try {
-				//Class.forName("com.mysql.jdbc.Driver");
 
-				//String pesquisa = request.getParameter("pesquisa");
+				String pesquisa;
+				pesquisa = request.getParameter("pesquisa");
+				if (pesquisa == null || pesquisa.trim().length() == 0) {
+					pesquisa = "";
+				}
 
 				Connection conectar;
 				Statement stmt;
@@ -46,101 +39,51 @@
 				String user = "root";
 				String pass = "root";
 
-				produto = Integer.parseInt(pesquisa);
-				//out.print(pesquisa);
 				int id = 0;
 				Class.forName("com.mysql.jdbc.Driver");
-
+				String sql = "";
 				conectar = DriverManager.getConnection(servidordb, user, pass);
 				stmt = conectar.createStatement();
-				String sql = "SELECT * FROM produto WHERE codigo =" + produto;
-				resultado = stmt.executeQuery(sql);
-				while (resultado.next()) {
-					nome = resultado.getString("nome");
-					descricao = resultado.getString("descricao");
-					categoria = Integer.parseInt(resultado.getString("categoria"));
-					valor = Float.parseFloat(resultado.getString("valor"));
-					img = resultado.getString("img");
+
+				if (pesquisa == "") {
+					sql = "SELECT * FROM produto";
+				} else {
+					int idProduto = Integer.parseInt(pesquisa);
+					sql = "SELECT * FROM produto WHERE codigo =" + idProduto;
 				}
 
-			}
-			catch (Exception e) {
+				resultado = stmt.executeQuery(sql);
+
+							
+
+				while (resultado.next()) {
+						out.print("<div class='card'>");
+						out.print("<img class='card-img-top' src='");
+						out.print(resultado.getString("img"));
+						out.print("'alt='Card image'>");
+						out.print("<div class='card-body'>");
+						out.print("<h4 class='card-title'>");
+						out.print(resultado.getString("nome")); 
+						out.print("</h4>");
+						out.print("<h6 class='card-title'>R$");
+						out.print(resultado.getString("valor")); 
+						out.print("</h6>");
+						out.print("<p class='card-text'>");
+						out.print(resultado.getString("descricao"));
+						out.print("</p>");
+						out.print("<a href='#' class='btn btn-primary'>Detalhes</a>");
+					    out.print("</div>");
+						out.print("</div>");
+					
+				}
+
+
+			} catch (Exception e) {
 				e.printStackTrace();
-				out.println(e);
+				out.println("Erro code" + e);
 			}
-		} else {
-			frase = "Cadastrar produto";
-		}
-		%>
-
-	<form action="consulta.jsp" method="get">
-		<div class="form-row">
-			<div class="col-4"><h1>Pesquisar Produtos</h1></div>
-			<div class="col-6"></div>
-			<div class="col-2"></div>
+			%>
+			</form>
 		</div>
-		<div class="form-row">
-			<div class="col-6"><input type="text" class="form-control"	placeholder="ID ou em branco para todos" name="pesquisa"></div>
-			<div class="col-2"><input class="form-control" type="submit" name="pesquisar"value="Pesquisar"></div>
-		</div>
-	</form>
-	<br>
-	<form action="excluir.jsp" method="get">
-		<div class="form-row">
-			<div class="col-4"><h1>Excluir Produto</h1></div>
-			<div class="col-6"></div>
-			<div class="col-2"></div>
-		</div>
-		<div class="form-row">
-			<div class="col-6"><input type="number" class="form-control" placeholder="Id" name="pesquisa" placeholder="Entre com o ID:" required></div>
-			<div class="col-2"><input class="form-control" type="submit" name="Excluir"value="Excluir"></div>
-		</div>
-	</form>
-		<br>
-
-		<div class="col-4"></div>
-		<div class="col-4">
-			<h1>
-				<%
-				out.print(frase);
-				%>
-			</h1>
-		</div>
-		<div class="col-4"></div>
-		<form action="<%out.print(pagina);%>" method="get">
-			<div class="form-row">
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="ID do produto" value="<%if (produto == 0) {out.print("");} else {out.print(produto);}%>" name="produto" readonly>
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control"
-						placeholder="Nome" name="nome"
-						value="<%out.print(nome);%>">
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Descrição"
-						value="<%out.print(descricao);%>" name="descricao" required>
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control"
-						placeholder="Categoria" name="categoria" required
-						value="<%out.print(categoria);%>">
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Imagem"
-						value="<%out.print(img);%>" name="img">
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" placeholder="Valor"
-						value="<%if (valor == 0) {out.print("");} else {out.print(valor);}%>"name="valor" required>
-				</div>
-				<div class="col-2">
-					<input type="submit" class="form-control"
-						value="<%out.print(action);%>" name="btn">
-				</div>
-				<div class="col-6"></div>
-			</div>
-		</form>
-	</div>
 </body>
 </html>
