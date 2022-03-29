@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta http-equiv='refresh' content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+</head>
+<body>
+<%
+try{
+Connection conectar = null;
+Statement stmt = null;
+ResultSet rs = null;
+
+String servidordb = "jdbc:mysql://localhost:3306/empregos";
+String user = "root";
+String pass = "root";
+ 
+Class.forName("com.mysql.jdbc.Driver");
+conectar = DriverManager.getConnection(servidordb,user,pass);
+stmt = conectar.createStatement();
+String dados = request.getParameter("pesquisa");
+int pes = Integer.parseInt(dados);
+String sql = "Delete from vagas where idvaga="+pes;
+int n = stmt.executeUpdate(sql);
+if(n>0){
+	//out.print("Excluido com Sucesso!!!!"); 
+}
+}
+catch(Exception e){
+	e.printStackTrace(); 
+	out.print("Erro"); 
+	
+}
+
+
+
+%>
+
+</body>
+</html>

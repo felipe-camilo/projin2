@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+function confirma() {
+  let text;
+  if (confirm("Press a button!") == true) {
+    text = "You pressed OK!";
+  } else {
+    text = "You canceled!";
+  }
+}
+</script>
+<meta charset="ISO-8859-1">
+<title>Vagas</title>
+</head>
+<body>
+	<div class="container">
+	<h1>Relação de vagas</h1>
+	<a href="indexteste.jsp">Voltar</a>
+		<form action="excluir.jsp" method="get">
+			<table border="0"></table>
+
+			<%
+		
+			try {
+				//Class.forName("com.mysql.jdbc.Driver");
+				
+				String pesquisa = request.getParameter("pesquisa");
+				//out.print(pesquisa);
+
+				
+				Connection conectar;
+				Statement stmt;
+				ResultSet resultado;
+				String servidordb = "jdbc:mysql://localhost:3306/empregos";
+				String user = "root";
+				String pass = "root";
+				
+				
+				out.print(pesquisa);
+				int id = 0;
+			    Class.forName("com.mysql.jdbc.Driver");
+			    String sql = "";
+			    conectar = DriverManager.getConnection(servidordb,user,pass);
+			    stmt = conectar.createStatement();	  
+				if (pesquisa == "") {
+					sql = "SELECT * FROM vagas";
+				}
+				else {
+					int vagas = Integer.parseInt(pesquisa);
+					sql = "SELECT * FROM vagas WHERE idvaga =" + vagas;
+				}
+			    //String sql = "SELECT * FROM vagas WHERE idvaga =" + vagas;
+			    //String sql = "SELECT * FROM vagas";
+			    resultado = stmt.executeQuery(sql);
+			    
+				
+
+			    out.print("<table class='table table-striped'>");
+		    	out.print("<tr>");
+		    	out.print("<th>");
+		    	out.print("ID");
+		    	out.print("</th>");  	
+		    	out.print("<th>");
+		    	out.print("Descrição");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Requisitos");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Desejaveis");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Remuneração");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Aberta");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Beneficios");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Local de trabalho");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Editar");
+		    	out.print("</th>");
+		    	out.print("<th>");
+		    	out.print("Deletar");
+		    	out.print("</th>");
+		    	out.print("</tr>");
+			    
+			    while(resultado.next()) {
+			    	
+			    	
+			    	out.print("<tr>");
+			    	out.print("<td>");
+			    	out.print(resultado.getInt("idvaga"));
+			    	id = resultado.getInt("idvaga");
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("descricao"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("req_obrigatorios"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("req_desejaveis"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("remuneracao"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("aberta"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("beneficios"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print(resultado.getString("local_trabalho"));
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print("<a href = 'indexteste.jsp?pesquisa="+id+"'><i class='fa fa-edit' style='font-size:25px;color:green'></i>");
+			    		//out.print(id);
+			    	out.print("</td>");
+			    	out.print("<td>");
+			    	out.print("<a href = 'excluir.jsp?pesquisa="+id+"'><i class='fa fa-remove' style='font-size:25px;color:red'></i>");
+			    	out.print("</td>");
+			    	out.print("</tr>");
+			    }
+			    
+		    	out.print("</table>");
+			 			    
+			}
+			catch(Exception e) {
+				e.printStackTrace(); //exibe o erro	
+				out.println("ferrou zé!!!");
+			}
+		%>
+		</form>
+	</div>
+</body>
+</html>
