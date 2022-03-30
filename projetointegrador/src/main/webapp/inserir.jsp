@@ -3,63 +3,63 @@
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
-    
-  
+
+
 <!DOCTYPE html>
 <html>
 <head>
- <meta http-equiv='refresh' content='60; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<meta http-equiv='refresh'	content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
 <meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
 <body>
 
-<%
 
-try {
-	Connection conectar = null;
-	Statement stmt = null;
-	Statement stmt1 = null;
-	ResultSet rs = null;
-	String servidordb = "jdbc:mysql://localhost:3306/databasepi";
-	String user = "root";
-	String pass = "root";
-	 
-    Class.forName("com.mysql.jdbc.Driver");
-   	conectar = DriverManager.getConnection(servidordb,user,pass);
-   	stmt = conectar.createStatement();
-    stmt1 = conectar.createStatement();
-   
 
-    String nome = request.getParameter("nome");
-    String descricao = request.getParameter("descricao");
-    Integer categoria = Integer.parseInt(request.getParameter("categoria"));
-    
-    
-    String img = request.getParameter("img");
-    if( img == null || img.trim().length() == 0 ){
-    	img = "";
+
+	<%
+	try {
+		Connection conectar = null;
+		Statement stmt = null;
+		Statement stmt1 = null;
+		ResultSet rs = null;
+		String servidordb = "jdbc:mysql://localhost:3306/databasepi";
+		String user = "root";
+		String pass = "root";
+
+		Class.forName("com.mysql.jdbc.Driver");
+		conectar = DriverManager.getConnection(servidordb, user, pass);
+		stmt = conectar.createStatement();
+		stmt1 = conectar.createStatement();
+
+		String nome = request.getParameter("nome");
+		String descricao = request.getParameter("descricao");
+		Integer categoria = Integer.parseInt(request.getParameter("categoria"));
+
+		String img = request.getParameter("img");
+		if (img == null || img.trim().length() == 0) {
+			img = "img/default.jpg";
+		}
+
+		float valor = Float.parseFloat(request.getParameter("valor"));
+
+		//String sql = "INSERT INTO produto (nome, descricao, categoria, img, valor) VALUES ";
+		// String sql = "INSERT INTO produto (nome, descricao) VALUES ";
+		String sql = "INSERT INTO produto (nome, descricao, categoria, img, valor) VALUES ";
+		sql = sql + "('" + nome + "','" + descricao + "', '" + categoria + "', '" + img + "', '" + valor + "')";
+
+		int n = stmt1.executeUpdate(sql);
+
 	}
-    
-    
-    
-    float valor = Float.parseFloat(request.getParameter("valor"));
 
-    
-    String sql = "INSERT INTO produto (nome, descricao, categoria, img, valor) VALUES ";
-    sql = sql + "('"+nome+"','"+descricao+"','"+categoria+"',"+img+",'"+valor+"')";
-    
-   int n = stmt1.executeUpdate(sql);
-    
-}
+	catch (Exception e) {
+		e.printStackTrace();
+		out.println("Erro" + e);
 
-catch(Exception e){
-	e.printStackTrace();
-	out.println("Erro" + e);
-	
-}
-
-%>
+	}
+	%>
 
 </body>
 </html>

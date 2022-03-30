@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"	pageEncoding="ISO-8859-1"%> 
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -17,14 +18,58 @@
 	width: auto;
 }
 </style>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sacramento&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laços toda Linda</title>
+
 
 <meta charset="ISO-8859-1">
 <title>Produtos</title>
 </head>
 <body>
 	<div class="container">
-	<h1>Relação de produtos</h1>
-	<a href="admin.jsp">Voltar</a>
+	
+	<header class="topo">
+            <div class="row justify-content-md-center text-center">
+                <div class="col-md-12">
+                    <div class="texto-logo">
+                        Laços toda Linda
+                        <img class="logo" src="img/laco.png">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- menu superior -->
+
+        <section class="menu-superior">
+            <div class="row justify-content-md-center text-center">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <ul class="nav nav-pills nav-justified nav-menu-superior">
+                        <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="index.jsp">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="quem_somos.jsp">Quem somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="contato.jsp">Contatos</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="admin.jsp">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
 		<form action="excluir.jsp" method="get">
 			<table border="0"></table>
 
@@ -61,11 +106,9 @@
 					int idProduto = Integer.parseInt(pesquisa);
 					sql = "SELECT * FROM produto WHERE codigo =" + idProduto;
 				}
-
 			    resultado = stmt.executeQuery(sql);
 			    
 				
-
 			    out.print("<table class='table table-striped'>");
 		    	out.print("<tr>");
 		    	out.print("<th>");

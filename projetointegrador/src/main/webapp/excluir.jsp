@@ -18,7 +18,7 @@ Connection conectar = null;
 Statement stmt = null;
 ResultSet rs = null;
 
-String servidordb = "jdbc:mysql://localhost:3306/empregos";
+String servidordb = "jdbc:mysql://localhost:3306/databasepi";
 String user = "root";
 String pass = "root";
  
@@ -27,7 +27,7 @@ conectar = DriverManager.getConnection(servidordb,user,pass);
 stmt = conectar.createStatement();
 String dados = request.getParameter("pesquisa");
 int pes = Integer.parseInt(dados);
-String sql = "Delete from vagas where idvaga="+pes;
+String sql = "Delete from produto where codigo="+pes;
 int n = stmt.executeUpdate(sql);
 if(n>0){
 	//out.print("Excluido com Sucesso!!!!"); 
