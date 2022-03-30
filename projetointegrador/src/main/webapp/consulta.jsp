@@ -152,7 +152,7 @@
 			    	out.print(resultado.getString("descricao"));
 			    	out.print("</td>");
 			    	out.print("<td>");
-			    	out.print(resultado.getInt("categoria"));
+			    	out.print(resultado.getString("categoria"));
 			    	out.print("</td>");
 			    	out.print("<td>");
 			    	out.print("<img class='fotolista' src='");

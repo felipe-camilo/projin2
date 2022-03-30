@@ -23,7 +23,7 @@
 <%
 String nome = "";
 String descricao = "";
-int categoria = 0;
+String categoria = "";
 String img = "";
 Float valor = 0.f;
 String frase = "";
@@ -60,7 +60,7 @@ if (pesquisa != null) {
 		while (resultado.next()) {
 	nome = resultado.getString("nome");
 	descricao = resultado.getString("descricao");
-	categoria = Integer.parseInt(resultado.getString("categoria"));
+	categoria = resultado.getString("categoria");
 	valor = Float.parseFloat(resultado.getString("valor"));
 	img = resultado.getString("img");
 		}
@@ -188,16 +188,61 @@ if (pesquisa != null) {
 							</div>
 							<div class="col-6">
 								<input type="text" class="form-control" placeholder="Nome"
-									name="nome" value="<%out.print(nome);%>">
+									name="nome" value="<%out.print(nome);%>" required>
 							</div>
 							<div class="col-6">
 								<input type="text" class="form-control" placeholder="Descrição"
 									value="<%out.print(descricao);%>" name="descricao" required>
 							</div>
-							<div class="col-6">
+							<%-- <div class="col-6">
 								<input type="text" class="form-control" placeholder="Categoria"
 									name="categoria" required value="<%out.print(categoria);%>">
-							</div>
+							</div> --%>
+							
+							 <div class="col-6">
+								<div class="form-group">
+								  <select class="form-control" name="categoria" required>
+								
+								  <option value="">Categoria</option>
+								  <%if (categoria.equals("Laços")) {
+									 out.print("<option value='Laços' selected>Laços</option>"); 
+								  }
+								  else {
+									  out.print("<option value='Laços'>Laços</option>");
+									 
+								  }
+								  %>
+								  
+								    <%if (categoria.equals("Arcos")) {
+									 out.print("<option value='Arcos' selected>Arcos</option>"); 
+								  }
+								  else {
+									  out.print("<option value='Arcos'>Arcos</option>");
+									 
+								  }
+								  %>
+								  
+								    <%if (categoria.equals("Fantoches")) {
+									 out.print("<option value='Fantoches' selected>Fantoches</option>"); 
+								  }
+								  else {
+									  out.print("<option value='Fantoches'>Fantoches</option>");
+									 
+								  }
+								  %>
+								  
+								    <%if (categoria.equals("Diversos")) {
+									 out.print("<option value='Diversos' selected>Diversos</option>"); 
+								  }
+								  else {
+									  out.print("<option value='Diversos'>Diversos</option>");
+									 
+								  }
+								  %>
+								  </select>
+								</div>
+						 	 </div>
+							
 							<div class="col-6">
 								<input type="text" class="form-control" placeholder="Imagem"
 									value="<%out.print(img);%>" name="img">
