@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv='refresh'	content='7; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<meta http-equiv='refresh'	content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
 <meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,14 +35,15 @@
 
 		String nome = request.getParameter("nome");
 		String descricao = request.getParameter("descricao");
-		int categoria = 0;
+		String categoria = request.getParameter("categoria");
+		/* int categoria = 0;
 		
 	
 		
 		if(request.getParameter("categoria") != null) {
 			out.print("aqui");
 		   categoria = Integer.parseInt(request.getParameter("categoria"));
-		}
+		} */
 		//Integer categoria = Integer.parseInt(request.getParameter("categoria"));
 
 		String img = request.getParameter("img");

@@ -49,8 +49,12 @@ pageEncoding="ISO-8859-1"%>
                         <li class="nav-item">
                             <a class="nav-link texto-categoria" href="quem_somos.jsp">Quem somos</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link texto-categoria" href="contato.jsp">Contatos</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="admin.jsp">Admin</a>
                         </li>
                     </ul>
                 </div>
@@ -62,20 +66,20 @@ pageEncoding="ISO-8859-1"%>
             <div class="row">
                 <div class="col-md-12 text-align-center">
                     <div class="col-md-2 menu-lateral">
-                        <ul class="menu-lateral-lista">
-                            <li class="menu-lateral-categoria">La�os</li>
+                      <ul class="menu-lateral-lista">
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=La�os">La�os</a></li>
                             <li class="">Luxo</li>
                             <li class="">Tem�tico</li>
                             <li class="">Diversos</li>
-                            <li class="menu-lateral-categoria">Fantoches</li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Arcos">Arcos</a></li>
                             <li class="">Luxo</li>
                             <li class="">Tem�tico</li>
                             <li class="">Diversos</li>
-                            <li class="menu-lateral-categoria">Arcos</li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Fantoches">Fantoches</a></li>
                             <li class="">Luxo</li>
                             <li class="">Tem�tico</li>
                             <li class="">Diversos</li>
-                            <li class="menu-lateral-categoria">Diversos</li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Diversos">Diversos</a></li>
                             <li class="">Luxo</li>
                             <li class="">Tem�tico</li>
                             <li class="">Diversos</li>
@@ -83,7 +87,7 @@ pageEncoding="ISO-8859-1"%>
                     </div>
                     <div class="col-md-10 conteudo">
                         <figure>
-                            <img class="img-fluid mx-auto" src="img/imagem_grande.jpg" />
+                            <img class="img-fluid mx-auto" src="img/default.jpg" />
                         </figure>
                     </div>
 
@@ -93,34 +97,7 @@ pageEncoding="ISO-8859-1"%>
                                 <br>Quem somos
                             </article>
                             <p>
-                                <br>Cuidados clínicos para aprovação. Vira uma bebida e um bate papo graduado. Para
-                                alguns objetivos. O futebol sed foi um investimento feio no futebol. Bate-papo
-                                de chocolate quente feio. Presente e maquiagem, que de nenhum facilisis feugiat,
-                                sem sapien lacinia metus, eu placerat mauris ex, que a tristeza. Phasellus
-                                pulvinar sapien bibendum erat volutpat, companhia aérea velit dignissim blandit.
-                                Mas os desenvolvedores, como a televisão gratuita de basquete. Presente variado
-                                como sendo o bloqueio do fluxo principal.
-
-                                Nulla ipsum lacus, fermentum sagittis laoreet vitae, porttitor uma bola de
-                                futebol. Salada de tomate de futebol ao vivo antes da grelha, coloque o ciclo de
-                                vida da maconha. Sed ultricies pot cenouras membros do teclado, o leão sem
-                                aljava, non porta felis Mauris zero. Futebol, basquete, futebol, piscinas,
-                                Bureau, show. Mas mesmo se formou ainda, mas a região em qualquer tanque autor.
-                                Lorem agora é ótimo futebol. Financiamento de nutrição imobiliária, amendoim ou
-                                vazamento de gás. Nem uma colher de molho, antioxidantes Mauris, lorem grelhado.
-                                Apresente fotografia no quintal e nos veículos. Não há um sorriso de
-                                conveniência ou uma surra.
-
-                                Pois, como o tortor eleifend, a atração da vida, laoreet felis. Nulla. Por medo
-                                ou estresse, beba emocionante, mas às vezes a corrida ao ar livre. Por favor,
-                                retransmita cuidado às vezes. Enéias agora o Federal Reserve, futebol e
-                                financiamento, geladeira televisão. Presente, do qual mencionamos qualquer arco,
-                                nem um interdum urna. A maior manufatura é sempre zero às vezes. Cada um de
-                                desenvolvedor de luto e futebol tincidunt ecológico. Natoque como é fácil a dor
-                                do luto pelo molho. Às vezes eles machucam a fome e ao primeiro gosto. Por
-                                emissões de carbono de direitos autorais dos maiores. Quem pode conversar com
-                                maquiagem, camada de cenouras início dedutível reservado. Mas um soft varius
-                                arcu, vitae mattis leo velit condimentum nec.
+                                <br>
                             </p>
                             </article>
                         </div>
@@ -132,25 +109,6 @@ pageEncoding="ISO-8859-1"%>
 
         </section>
     </div>
-
-    <script type="text/javascript">
-        //Flexlider
-
-        $(window).load(function () {
-            $('.flexslider').flexslider({ // A classe .flexslider é a classe que aparece no html
-                animation: "slide", // Forma de animação
-                easing: "swing",
-                animationLoop: true, // Loop infinito do slide, se não quiser seta como false
-                itemWidth: 900, // Largura da imagem, caso queira o slide full, remova essa linha
-                itemMargin: 32, // Margem da imagem, caso não queira espaçamento das colunas remova essa linha
-                slideshowSpeed: 5000, // Velocidade da transição em milésimo de segundos
-                touch: true, // Ativa a função de touch em dispositivos móveis
-                keyboard: true // Navegação pelo teclado
-            });
-        });
-
-    </script>
-
 </body>
 
 </html>

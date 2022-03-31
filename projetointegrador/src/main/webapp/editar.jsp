@@ -10,7 +10,7 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv='refresh' content='5; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<meta http-equiv='refresh' content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
 <title>Insert title here</title>
 </head>
 <body>
@@ -42,8 +42,6 @@ try {
     
     float valor = Float.parseFloat(request.getParameter("valor"));
     int idProduto = Integer.parseInt(produto);
-    
-    out.print(categoria);
 
     String sql = "UPDATE produto SET nome = '" + nome + "', descricao = '"+descricao+"', categoria = '"+categoria+"', img = '"+img+"', valor = '"+valor+"' WHERE codigo="  + idProduto;
 

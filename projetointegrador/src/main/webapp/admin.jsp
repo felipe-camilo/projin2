@@ -62,7 +62,6 @@ if (pesquisa != null) {
 	descricao = resultado.getString("descricao");
 	categoria = resultado.getString("categoria");
 	valor = Float.parseFloat(resultado.getString("valor"));
-	out.print(categoria);
 	img = resultado.getString("img");
 		}
 
@@ -114,15 +113,20 @@ if (pesquisa != null) {
 				<div class="col-md-2"></div>
 				<div class="col-md-10">
 					<ul class="nav nav-pills nav-justified nav-menu-superior">
-						<li class="nav-item"><a class="nav-link texto-categoria"
-							href="index.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link texto-categoria"
-							href="quem_somos.jsp">Quem somos</a></li>
-						<li class="nav-item"><a class="nav-link texto-categoria"
-							href="contato.jsp">Contatos</a></li>
-						<li class="nav-item"><a class="nav-link texto-categoria"
-							href="admin.jsp">Admin</a></li>
-					</ul>
+                        <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="index.jsp">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="quem_somos.jsp">Quem somos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="contato.jsp">Contatos</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="admin.jsp">Admin</a>
+                        </li>
+                    </ul>
 				</div>
 			</div>
 		</section>

@@ -48,8 +48,12 @@
                         <li class="nav-item">
                             <a class="nav-link texto-categoria" href="quem_somos.jsp">Quem somos</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link texto-categoria" href="contato.jsp">Contatos</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link texto-categoria" href="admin.jsp">Admin</a>
                         </li>
                     </ul>
                 </div>
@@ -61,20 +65,20 @@
             <div class="row">
                 <div class="col-md-12 text-align-center">
                     <div class="col-md-2 menu-lateral">
-                        <ul class="menu-lateral-lista">
-                            <li class="menu-lateral-categoria">Laços</li>
+                         <ul class="menu-lateral-lista">
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Laços">Laços</a></li>
                             <li class="">Luxo</li>
                             <li class="">Temático</li>
                             <li class="">Diversos</li>
-                            <li class="menu-lateral-categoria">Fantoches</li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Arcos">Arcos</a></li>
                             <li class="">Luxo</li>
                             <li class="">Temático</li>
                             <li class="">Diversos</li>
-                            <li class="menu-lateral-categoria">Arcos</li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Fantoches">Fantoches</a></li>
                             <li class="">Luxo</li>
                             <li class="">Temático</li>
                             <li class="">Diversos</li>
-                            <li class="menu-lateral-categoria">Diversos</li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Diversos">Diversos</a></li>
                             <li class="">Luxo</li>
                             <li class="">Temático</li>
                             <li class="">Diversos</li>
@@ -82,7 +86,7 @@
                     </div>
                     <div class="col-md-10 conteudo">
                         <figure>
-                            <img class="img-fluid mx-auto" src="img/imagem_grande.jpg" />
+                            <img class="img-fluid mx-auto" src="img/default.jpg" />
                         </figure>
                     </div>
 

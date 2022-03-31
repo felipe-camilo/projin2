@@ -4481,3 +4481,9 @@ java.lang.UnsupportedOperationException: Attempting to install a second facet ve
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1440)
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2022-03-31 00:15:21.617
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2022-03-31 00:15:22.568
+!MESSAGE Server processes have terminated prematurely. Please check your server logs for more details. 

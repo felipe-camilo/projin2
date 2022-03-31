@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.DriverManager"%>
@@ -14,7 +14,7 @@
     <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laços toda Linda</title>
+    <title>LaÃ§os toda Linda</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css" href="css/flexslider.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.flexslider.js"></script>
-<meta charset="ISO-8859-1">
 <title>Produtos</title>
 </head>
 
@@ -34,7 +33,7 @@
             <div class="row justify-content-md-center text-center">
                 <div class="col-md-12">
                     <div class="texto-logo">
-                        Laços toda Linda
+                        LaÃ§os toda Linda
                         <img class="logo" src="img/laco.png">
                     </div>
                 </div>
@@ -73,21 +72,21 @@
                 <div class="col-md-12 text-align-center">
                     <div class="col-md-2 menu-lateral">
                         <ul class="menu-lateral-lista">
-                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Laços">Laços</a></li>
+                            <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=LaÃ§os">LaÃ§os</a></li>
                             <li class="">Luxo</li>
-                            <li class="">Temático</li>
+                            <li class="">TemÃ¡tico</li>
                             <li class="">Diversos</li>
                             <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Arcos">Arcos</a></li>
                             <li class="">Luxo</li>
-                            <li class="">Temático</li>
+                            <li class="">TemÃ¡tico</li>
                             <li class="">Diversos</li>
                             <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Fantoches">Fantoches</a></li>
                             <li class="">Luxo</li>
-                            <li class="">Temático</li>
+                            <li class="">TemÃ¡tico</li>
                             <li class="">Diversos</li>
                             <li class="menu-lateral-categoria"><a href="index.jsp?pesquisa=Diversos">Diversos</a></li>
                             <li class="">Luxo</li>
-                            <li class="">Temático</li>
+                            <li class="">TemÃ¡tico</li>
                             <li class="">Diversos</li>
                         </ul>
                     </div>
@@ -132,9 +131,9 @@
 						out.print("<h4 class='card-title'>");
 						out.print(resultado.getString("nome")); 
 						out.print("</h4>");
-						out.print("<h6 class='card-title'>R$");
+						out.print("<h3 class='card-title'>R$");
 						out.print(resultado.getString("valor")); 
-						out.print("</h6>");
+						out.print("</h3>");
 						out.print("<p class='card-text'>");
 						out.print(resultado.getString("descricao"));
 						out.print("</p>");

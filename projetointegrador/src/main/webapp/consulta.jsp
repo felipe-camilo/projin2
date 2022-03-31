@@ -58,10 +58,11 @@
                         <li class="nav-item">
                             <a class="nav-link texto-categoria" href="quem_somos.jsp">Quem somos</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link texto-categoria" href="contato.jsp">Contatos</a>
                         </li>
-                         <li class="nav-item">
+                          <li class="nav-item">
                             <a class="nav-link texto-categoria" href="admin.jsp">Admin</a>
                         </li>
                     </ul>
