@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-15"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.DriverManager"%>
@@ -9,19 +9,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<meta http-equiv='refresh' content='0; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv='refresh' content='5; URL=consulta.jsp?pesquisar=Pesquisar&pesquisa='>
 <title>Insert title here</title>
 </head>
 <body>
 <%
 
 try {
+
 	Connection conectar = null;
 	Statement stmt = null;
 	Statement stmt1 = null;
 	ResultSet rs = null;
-	String servidordb = "jdbc:mysql://localhost:3306/databasepi";
+	String servidordb = "jdbc:mysql://localhost:3306/databasepi?charSet=UTF-8";
 	String user = "root";
 	String pass = "root";
 	 
@@ -35,7 +36,6 @@ try {
     String descricao = request.getParameter("descricao");
     String categoria = request.getParameter("categoria");
     String img = request.getParameter("img");
-    
     if( img == null || img.trim().length() == 0 ){
     	img = "img/default.jpg";
 	}
@@ -43,7 +43,7 @@ try {
     float valor = Float.parseFloat(request.getParameter("valor"));
     int idProduto = Integer.parseInt(produto);
     
-    request.setCharacterEncoding("UTF-8");
+    out.print(categoria);
 
     String sql = "UPDATE produto SET nome = '" + nome + "', descricao = '"+descricao+"', categoria = '"+categoria+"', img = '"+img+"', valor = '"+valor+"' WHERE codigo="  + idProduto;
 

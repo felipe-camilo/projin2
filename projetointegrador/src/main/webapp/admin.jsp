@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.DriverManager"%>
@@ -15,7 +15,7 @@
 @import	url('https://fonts.googleapis.com/css2?family=Lobster&family=Sacramento&display=swap')	;
 @import	url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap')	;
 </style>
- <meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -44,7 +44,7 @@ if (pesquisa != null) {
 		Connection conectar;
 		Statement stmt;
 		ResultSet resultado;
-		String servidordb = "jdbc:mysql://localhost:3306/databasepi";
+		String servidordb = "jdbc:mysql://localhost:3306/databasepi?charSet=UTF-8";
 		String user = "root";
 		String pass = "root";
 
@@ -62,6 +62,7 @@ if (pesquisa != null) {
 	descricao = resultado.getString("descricao");
 	categoria = resultado.getString("categoria");
 	valor = Float.parseFloat(resultado.getString("valor"));
+	out.print(categoria);
 	img = resultado.getString("img");
 		}
 
@@ -74,7 +75,7 @@ if (pesquisa != null) {
 }
 %>
 
-<title>Laços toda Linda</title>
+<title>LaÃ§os toda Linda</title>
 
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -83,8 +84,7 @@ if (pesquisa != null) {
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet"
-	ref="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/flexslider.css">
@@ -101,7 +101,7 @@ if (pesquisa != null) {
 			<div class="row justify-content-md-center text-center">
 				<div class="col-md-12">
 					<div class="texto-logo">
-						Laços toda Linda <img class="logo" src="img/laco.png">
+						LaÃ§os toda Linda <img class="logo" src="img/laco.png">
 					</div>
 				</div>
 			</div>
@@ -191,7 +191,7 @@ if (pesquisa != null) {
 									name="nome" value="<%out.print(nome);%>" required>
 							</div>
 							<div class="col-6">
-								<input type="text" class="form-control" placeholder="Descrição"
+								<input type="text" class="form-control" placeholder="DescriÃ§Ã£o"
 									value="<%out.print(descricao);%>" name="descricao" required>
 							</div>
 							<%-- <div class="col-6">
@@ -204,11 +204,11 @@ if (pesquisa != null) {
 								  <select class="form-control" name="categoria" required>
 								
 								  <option value="">Categoria</option>
-								  <%if (categoria.equals("Laços")) {
-									 out.print("<option value='Laços' selected>Laços</option>"); 
+								  <%if (categoria.equals("LaÃ§os")) {
+									 out.print("<option value='LaÃ§os' selected>LaÃ§os</option>"); 
 								  }
 								  else {
-									  out.print("<option value='Laços'>Laços</option>");
+									  out.print("<option value='LaÃ§os'>LaÃ§os</option>");
 									 
 								  }
 								  %>
@@ -265,7 +265,6 @@ if (pesquisa != null) {
 					</form>
 				</div>
 
-	</div>
 </body>
 </html>
 

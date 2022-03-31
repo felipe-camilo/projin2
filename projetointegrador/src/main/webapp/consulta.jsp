@@ -72,6 +72,9 @@
 
 		<form action="excluir.jsp" method="get">
 			<table border="0"></table>
+			
+
+			
 
 			<%
 		

@@ -18,7 +18,6 @@
 
 
 
-
 	<%
 	try {
 		Connection conectar = null;
@@ -37,6 +36,8 @@
 		String nome = request.getParameter("nome");
 		String descricao = request.getParameter("descricao");
 		int categoria = 0;
+		
+	
 		
 		if(request.getParameter("categoria") != null) {
 			out.print("aqui");
